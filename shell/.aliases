@@ -1,11 +1,5 @@
 #!/bin/sh
 
-# distribution name
-dist=$(lsb_release -is)
-
-# distribution names
-declare -a dname=("Fedora" "Ubuntu")
-
 # percol
 alias pcd='cd $(find . | percol)'
 # pps -- search for process
@@ -55,18 +49,16 @@ alias cp='cp --dereference --verbose --recursive'
 alias rmd='rm -drf'
 
 # package manager
-case $dist in
-    $dname[1])
-        alias pu='sudo dnf update -y'
-        alias pi='sudo dnf install -y'
-        alias pf='dnf search'
-        ;;
-    $dname[2])
-        alias pu='sudo apt-get update -y'
-        alias pi='sudo apt-get install -y'
-        alias pf='apt search'
-        ;;
-esac
+if [ -e /etc/redhat-release ]; then
+    alias pu='sudo dnf update -y'
+    alias pi='sudo dnf install -y'
+    alias pf='dnf search'
+fi
+if [ -e /etc/debian_version ]; then
+    alias pu='sudo apt-get update -y'
+    alias pi='sudo apt-get install -y'
+    alias pf='apt search'
+fi
 
 # search for files in the current directory hierarchy
 alias fh='find .'
@@ -75,24 +67,20 @@ alias fh='find .'
 alias runs='service httpd start'
 
 # reboot the system
-case $dist in
-    $dname[1])
-        alias res='systemctl reboot'
-        ;;
-    $dname[2])
-        alias res='sudo reboot'
-        ;;
-esac
+if [ -e /etc/redhat-release ]; then
+    alias res='systemctl reboot'
+fi
+if [ -e /etc/debian_version ]; then
+    alias res='sudo reboot'
+fi
 
 # shut down the system
-case $dist in
-    $dname[1])
-        alias shu='systemctl poweroff'
-        ;;
-    $dname[2])
-        alias shu='sudo poweroff'
-        ;;
-esac
+if [ -e /etc/redhat-release ]; then
+    alias shu='systemctl poweroff'
+fi
+if [ -e /etc/debian_version ]; then
+    alias shu='sudo poweroff'
+fi
 
 # lanunch the Java application
 alias javaj='java -jar'
