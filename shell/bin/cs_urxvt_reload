@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Update terminal configuration and start new instance
+cs_term_update () {
+    xrdb ~/.Xresources && urxvt &
+}
+
+cs_term_update

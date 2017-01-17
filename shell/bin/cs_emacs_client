@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Edit file using named emacs daemon in new frame
+# Arguments:
+#     $1 -- name of server
+#     $2 -- file
+cs_emacsc () {
+    local name_of_daemon=$1
+    local filepath=$2
+    emacsclient --server-file=$name_of_daemon $filepath -c -n &
+}
+
+cs_emacsc

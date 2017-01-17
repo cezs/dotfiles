@@ -1,0 +1,4 @@
+:set +t +m
+:set prompt "λ> "
+:set prompt2 "| "
+:set editor "emacs"

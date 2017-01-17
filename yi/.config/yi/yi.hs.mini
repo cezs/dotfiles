@@ -1,0 +1,4 @@
+import Yi
+import Yi.Config.Users.Anders
+
+main = yi config

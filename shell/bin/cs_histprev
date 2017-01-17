@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cs_enter_dir () {
+    cd $(ls | percol)
+}
+
+cs_enter_dir

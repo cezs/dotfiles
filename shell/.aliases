@@ -1,0 +1,148 @@
+#!/bin/sh
+
+# distribution name
+dist=$(lsb_release -is)
+
+# distribution names
+declare -a dname=("Fedora" "Ubuntu")
+
+# percol
+alias pcd='cd $(find . | percol)'
+# pps -- search for process
+alias pps='ps aux | percol'
+alias plsserv='lsserv | percol'
+# interactive search
+alias pdnfs='cs_percol_dnf_search'
+# see man netstat
+alias pns='netstat | percol'
+# history
+alias ph='history | awk '"'"'{$1=""; print $0}'"'"' | percol'
+
+# list directory contents
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+alias llt='ls --sort=time -la'
+alias llg='ll | awk ''{print $9}'' | grep'
+
+# list services
+alias lsserv="systemctl list-units --type=service"
+
+# version control
+alias gitc='git clone --recursive'
+alias gituc='cs_git_ls_changed'
+alias gitlsch='cs_git_ls_changed_files'
+alias gitsa='cs_git_squash_all'
+alias gitlschf='cs_git_undo_commit'
+# list bare repository files
+alias gitls="git ls-tree --full-tree -r HEAD"
+
+# start again
+alias r='reset'
+
+# reload configuration files for zsh
+alias rzsh='cs_zsh_reload'
+
+# change file mode bits
+alias chmodx='chmod +x'
+alias chmodw='chmod +w'
+alias chmodr='chmod +r'
+
+# copy files and directories
+alias cp='cp --dereference --verbose --recursive'
+
+# force remove directory
+alias rmd='rm -drf'
+
+# package manager
+case $dist in
+    $dname[1])
+        alias pu='sudo dnf update -y'
+        alias pi='sudo dnf install -y'
+        alias pf='dnf search'
+        ;;
+    $dname[2])
+        alias pu='sudo apt-get update -y'
+        alias pi='sudo apt-get install -y'
+        alias pf='apt search'
+        ;;
+esac
+
+# search for files in the current directory hierarchy
+alias fh='find .'
+
+# start Apache Hypertext Transfer Protocol Server
+alias runs='service httpd start'
+
+# reboot the system
+case $dist in
+    $dname[1])
+        alias res='systemctl reboot'
+        ;;
+    $dname[2])
+        alias res='sudo reboot'
+        ;;
+esac
+
+# shut down the system
+case $dist in
+    $dname[1])
+        alias shu='systemctl poweroff'
+        ;;
+    $dname[2])
+        alias shu='sudo poweroff'
+        ;;
+esac
+
+# lanunch the Java application
+alias javaj='java -jar'
+
+# print lines matching the pattern
+alias grepd='grep -d recurse'
+alias grepdd='grep --directories=recurse --only-matching --line-number --files-with-matches'
+alias grepc='grep --count'
+
+# Emacs
+alias emacs="emacs --no-site-file"
+alias emacsd='emacs --debug-init'
+alias emacsc='emacsclient --create-frame'
+
+# Python
+alias juno='jupyter notebook'
+
+# remove directory with files
+alias rmd='rm --dir --force'
+
+# update configuration files
+alias arec='autoreconf --install'
+
+# Haskell libraries and programs
+alias cabali='cabal install'
+
+# unpackage
+alias tara='tar -zxfv'
+
+# diff
+alias differ='diff -Naur'
+
+# find process
+alias psg='ps ax | grep'
+alias psc='ps -C'
+
+# shred file
+alias shred='shred -n 6879'
+
+# Enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# Print each PATH with append newline
+alias vpaths='echo -e ${PATH//:/\\n}'

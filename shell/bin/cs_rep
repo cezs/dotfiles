@@ -1,0 +1,60 @@
+#!/bin/sh
+
+# Print small report
+#
+# Usage:
+# cs_rep <nr of times to be runned>
+#        <executable's filepath>
+#        <unique word in line containg data>
+#        <nr of column containg data>
+#        <substitute this string/char with empty char>
+#
+# Example usage:
+# cs)rep 3 ./factorise4 Time 6 s
+# ➜ factorise4
+# ➜ 0.845505216
+# ➜ 0.784153696
+# ➜ 0.784131394
+# ➜ 
+# ➜ Avg
+# ➜ 0.804597
+# ➜ 
+# ➜ Stdev
+# ➜ 0.0289266
+#
+# Changelog:
+# If $s had been predictable (say only "s" and "ns", it would be possible
+# to use the following:
+# cs_runntimes $t $e | grep $l | awk "{print \$$d}" | sed 's/s//' |
+# sed 's/ns//'
+#
+cs_rep () {
+    t=$1 # run n times
+    e=$2 # executable
+    l=$3 # word in line containg data
+    d=$4 # data's column number
+    s=$5 # substitute this with empty char
+
+    # Store all running times
+    dat=$(cs_runntimes $t $e \
+        | grep $l \
+        | awk "{print \$$d}" \
+        | sed -e 's/'"$s"'/'""'/')
+
+    # Store statistics
+    avg=$(echo $dat | cs_xbar 1)
+    stdev=$(echo $dat | cs_mu 1)
+
+    # Get only filename from the path
+    datname=$(basename $e)
+
+    # Print report
+    echo $datname
+    echo $dat
+    echo "Avg"
+    echo $avg
+    echo "Stdev"
+    echo $stdev
+}
+
+cs_rep

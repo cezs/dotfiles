@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# choose with percol, edit with gedit 
+# Arguments:
+#     $1 -- search term
+cs_percol_gedit () {
+    gedit $(locate "$1" | percol)
+}
+
+cs_percol_gedit
+

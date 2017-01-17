@@ -1,0 +1,46 @@
+! After making changes reload configuration with:
+! xrdb ~/.Xresources
+
+! Terminal Emulators
+
+! XTERM
+
+! Every shell is a login shell by default
+xterm*loginshell: true
+
+! Fonts
+xterm*faceName: DejaVu Sans Mono
+xterm*faceSize: 9
+
+! Colours
+xterm*foreground: rgb:ff/ff/ff
+xterm*background: rgb:00/00/00
+
+! Scrollbar
+xterm*rightScrollBar: false
+xterm*ScrollBar: false
+
+! URXVT
+
+! Every shell is a login shell by default
+URxvt.loginShell: true
+
+! Colours
+URxvt.foreground: rgb:ff/ff/ff
+URxvt.background: rgb:00/00/00
+URxvt.color12: rgb:54/99/c7
+
+! Scrollbar
+URxvt.scrollBar: false
+
+! Fonts
+! Use 'fc-list' or 'fc-list -f "%{family} : %{file}\n" :spacing=100 | sort'
+! or 'xfontsel' in order to find available fonts.
+! URxvt.font: xft:Liberation Mono:antialias=true:size=8
+! URxvt.font: xft:Roboto Mono:antialias=true:size=9
+! URxvt.font: xft:Oxygen Mono:antialias=true:size=9
+! URxvt.font: xft:Droid Sans Mono:antialias=true:size=8
+! URxvt.font: xft:Terminus:antialias=false:size=9
+URxvt.font: xft:DejaVu Sans Mono:antialias=true:size=9
+
+

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Use awk to print standard deviation in nth column
+#
+# Usage:
+# cs-mu <column's number> <filepath>
+#
+cs_mu () {
+    n=$1 # column's number
+    f=$2 # filepath
+    awk '{delta = $n - avg; avg += delta / NR; mean2 += delta * ($n - avg); } 
+          END { print sqrt(mean2 / NR); }' $f
+}
+
+cs_mu

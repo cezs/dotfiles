@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Use awk to print average of nth column
+#
+# Usage:
+# cs-xbar <column's number> <filepath>
+#
+cs_xbar () {
+    n=$1 # column's number
+    f=$2 # filepath
+    awk '{ sum += $n } END { if (NR > 0) print sum / NR }' $f
+}
+
+cs_xbar

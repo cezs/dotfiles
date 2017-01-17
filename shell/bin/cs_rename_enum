@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Rename files by enumerating them
+# Arguments:
+#     $1 -- filetype extension
+cs_renum () {
+    local extension=$1
+    ls -tr | cat -n | while read n f; do mv "$f" "$n.$extension"; done
+}
+
+cs_renum

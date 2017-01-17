@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Demo plot
+cs_temp_plot () {
+    ls -larS | awk '{print $2 "\t" $5}' | gnuplot -persist -e "plot '-' "
+}
+
+cs_temp_plot

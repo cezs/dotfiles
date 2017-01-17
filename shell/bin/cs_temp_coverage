@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Temporary function for gathering C program coverage
+cs_temp_coverage () {
+    # $@ -- files supplied to compiler
+    gcc --coverage --output $(basename $1 .c) $@ &&
+    lcov --capture --directory . --output-file coverage.info &&
+    genhtml coverage.info --output-directory coverage-docs
+}
+
+cs_temp_coverage

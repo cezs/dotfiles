@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Navigate to current directory in dired
+cs_dired () {
+    emacsclient -e "(dired \"${1:a}\")"
+}
+
+cs_dired

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Process files using Emacs-Lisp
+# Arguments:
+#     $1 -- emacs lisp
+#     $2 -- files
+cs_emacsb () {
+    local elisp=$1
+    local filepath=$2
+    emacs --batch --eval="$elisp" -l $filepath &
+}
+
+cs_emacsb

@@ -1,0 +1,17 @@
+#+options: toc:nil
+
+* Dotfiles
+
+#+toc: headlines 3 local
+
+** Installation
+
+These dotfiles use [[file:install.sh][install.sh]] to automate installation. If =use_stow= is set to true in this file, than script creates symbolic links requiring manual backup of existing files; if =use_stow= is set to false then, the script takes a backup of the existing files--currently being substituted with supplied repository files--and also creates symbolic links.
+
+** Usage
+
+See [[file:shell/bin/][shell/bin]] and [[file:shell/.aliases][shell/.aliases]] for callable commands. Configuration files such as those included in [[file:i3/.config/i3/config][i3]] directory as well as [[file:x11/.xinitrc][X initialization settings]], [[file:x11/.Xresources][terminal settings]], or [[file:zsh/zshrc.init][minimal zsh configuration]] will require customization. Some of the files such as e.g. [[file:zsh/zshenv][zshenv]] require the localized zsh configuration to be supplied with the /zshenv.local/ file. 
+
+** License
+
+See [[file:LICENSE][LICENSE]].

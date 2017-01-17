@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Form columns from list of files
+#
+# Example usage:
+# cs-rep 100 ./factorise0 Time 6 s > factorise0-bench.csv
+# cs-rep 100 ./factorise1 Time 6 s > factorise1-bench.csv
+# cs-rep 100 ./factorise2 Time 6 s > factorise2-bench.csv
+# cs-rep 100 ./factorise4 Time 6 s > factorise4-bench.csv
+# cs-formcols factorise0-bench.csv \
+#             factorise1-bench.csv \
+#             factorise2-bench.csv \
+#             factorise4-bench.csv
+#
+# Note:
+# If output is going to be redirected to file, it is suggested
+# that result of paste isn't passed to column command as the
+# second one might end up producing non-portable csv.
+#
+# Example:
+#       paste factorise0-bench.csv \
+#             factorise1-bench.csv \
+#             factorise2-bench.csv \
+#             factorise4-bench.csv
+#
+cs_formcols () { 
+    # "$@" are filepaths
+    paste "$@" | column -t
+}
+
+cs_formcols

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# List available monospaced fonts
+cs_ls_mono_font () {
+    fc-list -f "%{family} : %{file}\n" | sort
+}
+
+cs_ls_mono_font

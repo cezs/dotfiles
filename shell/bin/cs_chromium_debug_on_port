@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Run browser on given port
+# Arguments:
+#     $1 -- port number
+cs_web_deb () {
+    local port_num=$1
+    chromium-browser --remote-debugging-port=$port_num
+}
+
+cs_web_deb

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Print statistics
+#
+# Usage:
+# cs-stats <column's number> <filepath>
+#
+cs_stats () {
+    n=$1 # column's number
+    f=$2 # filepath
+    avg=$(cs_xbar $n $f)
+    stdev=$(cs_mu $n $f)
+    
+    echo "Avg\n$avg\n"
+    echo "Stdev\n$stdev"
+}
+
+cs_stats

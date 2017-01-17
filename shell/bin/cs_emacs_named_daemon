@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Run named emacs daemon
+# Arguments:
+#     $1 -- name of server
+cs_emacs_named_daemon () {
+    name_of_daemon=$1
+    emacs --daemon=$name_of_daemon &
+}
+
+cs_emacs_named_daemon

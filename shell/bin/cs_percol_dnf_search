@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# filter package search results
+# Arguments:
+#     $1 -- search term
+cs_percol_dnf_search () {
+    dnf search "$1" | percol
+}
+
+cs_percol_dnf_search
+
