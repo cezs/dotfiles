@@ -28,7 +28,7 @@
 # cs_runntimes $t $e | grep $l | awk "{print \$$d}" | sed 's/s//' |
 # sed 's/ns//'
 #
-cs_rep () {
+cs_report () {
     t=$1 # run n times
     e=$2 # executable
     l=$3 # word in line containg data
@@ -57,4 +57,4 @@ cs_rep () {
     echo $stdev
 }
 
-cs_rep
+cs_report

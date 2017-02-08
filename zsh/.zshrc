@@ -30,7 +30,7 @@ export ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="avit"
 # ZSH_THEME="frisk"
 # ZSH_THEME="amuse"
-ZSH_THEME="pure"
+ZSH_THEME="pure_mod"
 
 # Case-sensitive completion.
 CASE_SENSITIVE="false"
@@ -107,3 +107,8 @@ unsetopt MULTIOS
 export EDITOR=emacsclient
 
 autoload zmv
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:/lib64:/usr/lib:/usr/lib64:/usr/local/lib
+
+# one tab completion
+unsetopt listambiguous

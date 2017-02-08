@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Print total size of current directory
+cs_dirsz()
+{
+    ls -la | less | awk '{sum += $5} END {print sum}'
+}
+
+cs_dirsz

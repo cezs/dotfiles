@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Run program multiple times.
 # Takes two arguments, first is number of time to run a program
@@ -16,8 +16,7 @@ cs_runntimes () {
 
     for i in {0..$n}
     do
-        # $f
-        echo eded
+        $f
     done
 }
 

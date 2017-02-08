@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # percol
-alias pcd='cd $(find . | percol)'
+alias pcd='cd && cd $(find . | percol)'
 # pps -- search for process
 alias pps='ps aux | percol'
 alias plsserv='lsserv | percol'

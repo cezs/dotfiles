@@ -11,8 +11,8 @@ use_stow=true
 current_dir=$(pwd)
 
 # Remove conflicitng links. Not safe, deletes all broken links in home directory!
-# cd 
-# find . -type l -! -exec test -e {} \; -print | xargs rm
+cd 
+find . -type l -! -exec test -e {} \; -print | xargs rm
 
 # move back to repository
 cd $current_dir
