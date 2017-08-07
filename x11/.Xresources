@@ -42,5 +42,7 @@ URxvt.scrollBar: false
 ! URxvt.font: xft:Droid Sans Mono:antialias=true:size=8
 ! URxvt.font: xft:Terminus:antialias=false:size=9
 URxvt.font: xft:DejaVu Sans Mono:antialias=true:size=9
+! URxvt.font: xft:Monospace:antialias=true:size=9
+! URxvt*boldFont: xft:Monospace:antialias=true:size=9
 
-
+URxvt*letterSpace: -1
