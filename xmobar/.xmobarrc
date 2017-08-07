@@ -1,30 +1,33 @@
 Config { font = "xft:Bitstream Vera Sans Mono:size=8:normal:antialias=true"
-        , borderColor = "black"
-        , border = TopB
+        , border = NoBorder
+        , borderColor = "white"
         , bgColor = "black"
         , fgColor = "grey"
         , position = BottomW L 100
-        , commands = [ Run Weather "EGBB" ["-t","<tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
-                        , Run Network "wlan1" ["-L","0","-H","32","--normal","yellow","--high","green","--low","red","-t","<rx>kb<tx>kb"] 10
-                        , Run Wireless "wlan1" ["-L","40","-H","70","--normal","yellow","--high","green","--low","red","-t","<essid>(<quality>%)"] 10
-                        , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
-                        -- , Run Volume "default" "Master" [] 10
-                        -- , Run Volume "pulse" "Master" ["-t", "<volume>% <status>", "--", "-on", "x"] 10
-                        -- , Run Com "sh" ["/usr/local/bin/print_vol.sh"] "vol" 10
-                        -- , Run Com "i3status" [] "i3status" 10
-                        , Run Memory ["-t","Mem: <usedratio>%"] 10
-                        , Run Swap [] 10
-                        , Run Com "uname" ["-s","-r"] "" 36000
-                        , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-                        , Run StdinReader
-                        -- , Run Battery ["-t", "<acstatus>: <left>% - <timeleft>", "--", "-c", "charge_full", "-O", "AC", "-o", "Bat", "-h", "green", "-l", "red"] 10
-                        , Run Com  "/usr/bin/acpi" [] "battery" 10
-                        ]
+        , commands = [ Run Wireless "wlan1" [ "-L", "40",
+                                              "-H", "70", 
+                                              "--normal", "grey",
+                                              "--high", "green",
+                                              "--low", "red",
+                                              "-t", "<essid> | <quality>%"
+                                            ] 600
+                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                     , Run BatteryP ["BAT1"]
+                       [ "-t", "<left>% | <timeleft>",
+                         "-L", "15",
+                         "-H", "90", 
+                         "-h", "green",
+                         "-l", "red"
+                       ] 600
+                     , Run DiskU [("/", "<free>")]
+                       [ "-L", "50",
+                         "-H", "90",
+                         "-h", "green",
+                         "-l", "red"
+                       ] 600
+                     , Run StdinReader
+                     ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%StdinReader% }{%battery% | <fc=#ee9a00>%date%</fc>"
-        -- , template = "%StdinReader% }{"
-        -- , template = "%StdinReader% }{%battery% | <fc=#ee9a00>%date%</fc> | %i3status%"
+        , template = "%StdinReader% } %date% { %disku% | %wlan1wi% | %battery% "
         }
-
--- /usr/bin/acpi
