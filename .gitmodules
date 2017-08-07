@@ -1,3 +1,6 @@
 [submodule "emacs/.emacs.d"]
 	path = emacs/.emacs.d
 	url = https://github.com/cezs/.emacs.d
+[submodule "xmonad"]
+	path = xmonad
+	url = https://github.com/cezs/xmonad
